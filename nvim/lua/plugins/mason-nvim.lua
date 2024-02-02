@@ -1,14 +1,24 @@
 return {
   "williamboman/mason.nvim",
   cmd = "Mason",
-  keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+  keys = { 
+    { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } ,
+    { "<leader>um", "<cmd>MasonUpdate<cr>", desc = "Mason Update" } ,
+      
+  },
   build = ":MasonUpdate",
   opts = {
     ensure_installed = {
       "stylua",
+      "shellcheck",
       "shfmt",
+      "flake8",
+      "haskell-language-server",
       "haskell-debug-adapter",
-      "csharp-language-server csharp_ls",
+      "cpptools",
+      "cpplint",
+      "json-lsp",
+      "csharp-language-server",
     },
   },
   ---@param opts MasonSettings | {ensure_installed: string[]}
