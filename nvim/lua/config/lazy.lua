@@ -8,6 +8,9 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 
+-- changing the default shell, here I set to nushell
+vim.o.shell = "/home/ullas/.cargo/bin/nu"
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
