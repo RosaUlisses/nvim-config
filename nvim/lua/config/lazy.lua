@@ -55,9 +55,10 @@ require("lazy").setup({
 
 
 require("hop").setup({})
-require("Comment").setup({})
+require("Comment").setup()
 require("harpoon").setup({})
 require("multicursors").setup({})
+require('gitsigns').setup()
 
 local null_ls = require("null-ls")
 null_ls.setup({
