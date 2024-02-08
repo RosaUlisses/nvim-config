@@ -1,6 +1,6 @@
 # nvim-config
 
-This is my neovim configuration based on the lazyvim distro.
+This is my neovim configuration based on the lazyvim distro !!!
 
 ![image](https://github.com/RosaUlisses/nvim-config/assets/81490716/b6765f72-5a55-4e05-a6dc-d29a56bd819f)
 
@@ -37,5 +37,4 @@ This is my neovim configuration based on the lazyvim distro.
 
 # *TODO:*
   - [] README file to the repo
-  - [] find a git plugin (a plugin principally for helping me in the rebases)
   - [] installation script
