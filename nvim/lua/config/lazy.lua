@@ -68,3 +68,9 @@ null_ls.setup({
         null_ls.builtins.completion.spell,
     },
 })
+
+require('lspconfig').clangd.setup {
+  init_options = {
+    fallbackFlags = {'--std=c++20'}
+  }
+}

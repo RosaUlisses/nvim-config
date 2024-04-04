@@ -5,12 +5,20 @@ function set_input_file()
   vim.api.nvim_command(copy_command)
 end
 
+function run_cpp_file()
+  local current_file = vim.fn.expand("%")
+  local compile_command = string.format("!g++ -flto \"%s\" -o exe -std=c++20", current_file)
+  local run_command = string.format("!./exe")
+  vim.api.nvim_command(compile_command)
+  vim.api.nvim_command(run_command)
+end
+
 return {
 	'xeluxee/competitest.nvim',
 	dependencies = 'MunifTanjim/nui.nvim',
 	config = function() require('competitest').setup({
     compile_command = {
-      cpp = { exec = "g++", args = { "-Wall", "-DONLINE_JUDGE=1", "$(FNAME)", "-o", "$(FNOEXT)" } },
+      cpp = { exec = "g++", args = { "-Wall", "-DONLINE_JUDGE=1", "$(FNAME)", "-o", "$(FNOEXT)", "-std=c++20" } },
     },
     template_file = {
       cpp = "~/Programming/Competitive-Programming/cp/template.cpp"
@@ -25,6 +33,6 @@ return {
     { "<leader>cc", "<cmd>CompetiTest receive contest<CR>", desc = "CompetitTest receive contest"},
     { "<leader>ck", "<cmd>CompetiTest run<CR>", desc = "CompetitTest run test cases"},
     { "<leader>cs", "<cmd>CompetiTest show_ui<CR>", desc = "CompetitTest show ui"},
-    { "<leader>ci", set_input_file, desc = "Set input.txt file" }
+    { "<leader>ci", set_input_file, desc = "Set input.txt file" },
   }
 }

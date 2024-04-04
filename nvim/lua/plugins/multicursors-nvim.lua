@@ -9,7 +9,7 @@ return {
     keys = {
         { mode = {"n"}, "<leader>m", "<cmd>MCstart<CR>", desc = "Select word with multicursor" },
         { mode = {"v"}, "m", "<cmd>MCvisual<CR>", desc = "Select marked text with multicursor" },
-        { mode = {"n"}, "mp", "<cmd>MCvisualPattern<CR>", desc = "Select every occurence of a pattern" },
+        { mode = {"v"}, "mp", "<cmd>MCvisualPattern<CR>", desc = "Select every occurence of a pattern" },
         { "mc", "<cmd>MCclear<CR>", desc = "Clear all the selections"}
     }
 }

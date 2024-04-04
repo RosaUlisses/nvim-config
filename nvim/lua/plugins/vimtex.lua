@@ -18,6 +18,17 @@ end
 
 return {
   "lervag/vimtex",
+  dependencies = {
+    {
+      "folke/which-key.nvim",
+      optional = true,
+      opts = {
+        defaults = {
+          ["<leader>t"] = { name = "+latex" },
+        },
+      },
+    }
+  },
   keys = {
     {"<leader>to", compile_and_open_the_pdf, desc = "Compile tex file and open the pdf"},
     {"<leader>tc", "<cmd>VimtexCompile<CR>", desc = "Compile tex file"},
