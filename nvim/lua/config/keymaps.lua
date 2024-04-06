@@ -29,3 +29,6 @@ vim.keymap.set("n", "<leader>wb", "<cmd>MoveWord(-1)<CR>", { desc = "Move word t
 vim.keymap.set("n", "\\", "<cmd>normal ggVG<CR>", { desc = "Select all the text" })
 
 
+vim.keymap.set("n", "<leader>rn", ":IncRename ", { desc = "rename" })
+-- Deleting the default lazyvim rename keymap
+vim.keymap.del({"n"}, "<leader>cr")

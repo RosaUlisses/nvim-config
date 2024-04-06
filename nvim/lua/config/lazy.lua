@@ -74,3 +74,16 @@ require('lspconfig').clangd.setup {
     fallbackFlags = {'--std=c++20'}
   }
 }
+
+require("noice").setup {
+  presets = { inc_rename = true }
+}
+
+require("inc_rename").setup {
+  cmd_name = "IncRename",
+  hl_group = "Substitute",
+  preview_empty_name = false,
+  show_message = true,
+  input_buffer_type = nil,
+  post_hook = nil,
+}

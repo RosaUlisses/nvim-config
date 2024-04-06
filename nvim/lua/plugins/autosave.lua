@@ -1,4 +1,7 @@
 return {
   "pocco81/auto-save.nvim",
-  execution_message = false
+
+  keys = {
+    {"<C-a>", "<cmd>ASToggle<CR>", desc = "Auto save Toggle"},
+  }
 }
