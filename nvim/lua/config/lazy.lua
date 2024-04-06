@@ -7,7 +7,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-
 -- changing the default shell, here I set to nushell
 vim.o.shell = "/home/ullas/.cargo/bin/nu"
 
@@ -53,37 +52,38 @@ require("lazy").setup({
   },
 })
 
-
 require("hop").setup({})
 require("Comment").setup()
 require("harpoon").setup({})
 require("multicursors").setup({})
-require('gitsigns').setup()
+require("gitsigns").setup()
 
 local null_ls = require("null-ls")
 null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.completion.spell,
-    },
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.completion.spell,
+  },
 })
 
-require('lspconfig').clangd.setup {
+require("lspconfig").clangd.setup({
   init_options = {
-    fallbackFlags = {'--std=c++20'}
-  }
-}
+    fallbackFlags = { "--std=c++20" },
+  },
+})
 
-require("noice").setup {
-  presets = { inc_rename = true }
-}
+require("noice").setup({
+  presets = { inc_rename = true },
+})
 
-require("inc_rename").setup {
+require("inc_rename").setup({
   cmd_name = "IncRename",
   hl_group = "Substitute",
   preview_empty_name = false,
   show_message = true,
   input_buffer_type = nil,
   post_hook = nil,
-}
+})
+
+vim.g.autoformat = false

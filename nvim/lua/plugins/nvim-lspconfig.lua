@@ -1,8 +1,10 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      autoformat = false,
+    opts = {},
+
+    keys = {
+      {"<leader>cr", mode = {"n"}, false}
     },
   },
 }
