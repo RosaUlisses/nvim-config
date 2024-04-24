@@ -15,7 +15,9 @@ This is my neovim configuration based on the lazyvim distro !!!
     mv ~/.local/state/nvim{,.bak}
     mv ~/.cache/nvim{,.bak}
 
-    git clone https://github.com/RosaUlisses/nvim-config ~/.config/nvim
+    git clone https://github.com/RosaUlisses/nvim-config ~/.config
+
+
 
     # remove the .git folder, so you can add it to your own repo later
     rm -rf ~/.config/nvim/.git

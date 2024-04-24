@@ -28,6 +28,13 @@ local function split_windows_for_cp()
   vim.api.nvim_command("wincmd h")
 end
 
+local function close_splitted_windows_for_cp()
+  vim.api.nvim_command("wincmd l")
+  for i = 0, 2, 1 do
+    vim.api.nvim_command("q")
+  end
+end
+
 
 vim.keymap.set("n", "<leader>dy", debug_cpp_file, { desc = "Debug c++ file" })
 vim.keymap.set("n", "<leader>dk", run_cpp_file, { desc = "Run c++ file" })
@@ -44,3 +51,8 @@ vim.keymap.set("n", "\\", "<cmd>normal ggVG<CR>", { desc = "Select all the text"
 vim.keymap.set("n", "<leader>rn", ":IncRename ", { desc = "rename" })
 
 vim.keymap.set("n", "<leader>ws", split_windows_for_cp, { desc = "Split windows" })
+vim.keymap.set("n", "<leader>wk", close_splitted_windows_for_cp, { desc = "Close windows" })
+
+vim.keymap.set({"n", "o", "x"}, "'", function() require("flash").treesitter() end, { desc = "Flash treesitter" })
+
+
