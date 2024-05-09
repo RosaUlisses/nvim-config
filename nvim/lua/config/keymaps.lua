@@ -9,7 +9,7 @@ end
 local function run_cpp_file()
   local current_file = vim.fn.expand("%")
   local compile_command = string.format('!g++ -flto "%s" -o exe -std=c++20', current_file)
-  local run_command = string.format("!./exe")
+  local run_command = string.format("!timeout 3s ./exe")
   vim.api.nvim_command(compile_command)
   vim.api.nvim_command(run_command)
 end
@@ -30,9 +30,10 @@ end
 
 local function close_splitted_windows_for_cp()
   vim.api.nvim_command("wincmd l")
-  for i = 0, 2, 1 do
-    vim.api.nvim_command("q")
-  end
+  vim.api.nvim_command("q")
+  vim.api.nvim_command("q")
+  vim.api.nvim_command("wincmd l")
+  vim.api.nvim_command("q")
 end
 
 
@@ -53,6 +54,6 @@ vim.keymap.set("n", "<leader>rn", ":IncRename ", { desc = "rename" })
 vim.keymap.set("n", "<leader>ws", split_windows_for_cp, { desc = "Split windows" })
 vim.keymap.set("n", "<leader>wk", close_splitted_windows_for_cp, { desc = "Close windows" })
 
-vim.keymap.set({"n", "o", "x"}, "'", function() require("flash").treesitter() end, { desc = "Flash treesitter" })
+vim.keymap.set({"n", "o", "x"}, "\"", function() require("flash").treesitter() end, { desc = "Flash treesitter" })
 
 

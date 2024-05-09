@@ -86,4 +86,15 @@ require("inc_rename").setup({
   post_hook = nil,
 })
 
+
+-- With this, the autosave.nvim plugin stops sending notifications when the autosave occurs
+require("auto-save").setup({
+    enabled = true,
+    execution_message = {
+        message = "",
+        dim = 0,
+        cleaning_interval = 0,
+    },
+})
+
 vim.g.autoformat = false
