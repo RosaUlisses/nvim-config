@@ -1,21 +1,17 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   -- bootstrap lazy.nvim
   -- stylua: ignore
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
-
--- changing the default shell, here I set to nushell
-vim.o.shell = "/home/ullas/.cargo/bin/nu"
+vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import any extras modules here
-    { import = "lazyvim.plugins.extras.dap.nlua" },
+    { import = "plugins" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
@@ -52,49 +48,10 @@ require("lazy").setup({
   },
 })
 
+-- changing the default shell, here I set to nushell
+vim.o.shell = "/home/ullas/.cargo/bin/nu"
+
 require("hop").setup({})
-require("Comment").setup()
 require("harpoon").setup({})
-require("multicursors").setup({})
-require("gitsigns").setup()
-
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.completion.spell,
-  },
-})
-
-require("lspconfig").clangd.setup({
-  init_options = {
-    fallbackFlags = { "--std=c++20" },
-  },
-})
-
-require("noice").setup({
-  presets = { inc_rename = true },
-})
-
-require("inc_rename").setup({
-  cmd_name = "IncRename",
-  hl_group = "Substitute",
-  preview_empty_name = false,
-  show_message = true,
-  input_buffer_type = nil,
-  post_hook = nil,
-})
-
-
--- With this, the autosave.nvim plugin stops sending notifications when the autosave occurs
-require("auto-save").setup({
-    enabled = true,
-    execution_message = {
-        message = "",
-        dim = 0,
-        cleaning_interval = 0,
-    },
-})
 
 vim.g.autoformat = false
