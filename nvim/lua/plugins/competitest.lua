@@ -8,7 +8,7 @@ end
 local function run_cpp_file()
   local current_file = vim.fn.expand("%")
   local compile_command = string.format("!g++ -flto \"%s\" -o exe -std=c++20", current_file)
-  local run_command = string.format("!./exe")
+  local run_command = string.format("!timeout 3s ./exe")
   vim.api.nvim_command(compile_command)
   vim.api.nvim_command(run_command)
 end

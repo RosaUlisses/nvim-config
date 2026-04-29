@@ -10,6 +10,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
+    { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
@@ -17,6 +18,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.yanky" },
     { import = "plugins" },
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
+    { import = "lazyvim.plugins.extras.lang.python" },
   },
   defaults = {
     lazy = false,
@@ -41,5 +43,11 @@ vim.o.shell = "/home/ullas/.cargo/bin/nu"
 
 require("hop").setup({})
 require("harpoon").setup({})
+
+require("lspconfig").clangd.setup({
+  init_options = {
+    fallbackFlags = {'--std=c++20'}
+  }
+})
 
 vim.g.autoformat = false

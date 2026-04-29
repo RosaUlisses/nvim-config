@@ -30,6 +30,7 @@ end
 
 
 vim.keymap.set("n", "<leader>dk", run_cpp_file, { desc = "Run c++ file" })
+vim.keymap.set("n", "<leader>dy", "<cmd>DapContinue<CR>", { desc = "Debug c++ executable"})
 vim.keymap.set("n", "\\", "<cmd>normal ggVG<CR>", { desc = "Select all the text" })
 vim.keymap.set("n", "<leader>ws", split_windows_for_cp, { desc = "Split windows" })
 vim.keymap.set("n", "<leader>wk", close_splitted_windows_for_cp, { desc = "Close windows" })
